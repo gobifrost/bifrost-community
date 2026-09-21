@@ -15,6 +15,9 @@ from typing import Any, Dict, List, Optional
 import requests
 
 
+HALO_USER_AGENT = "Bifrost/1.0 (+https://gobifrost.com)"
+
+
 # =============================================================================
 # Helper Classes
 # =============================================================================
@@ -87335,6 +87338,7 @@ class _LazyClient:
 
         config = integration.config or {}
         session = requests.Session()
+        session.headers["User-Agent"] = HALO_USER_AGENT
 
         # OAuth authentication
         if integration.oauth and integration.oauth.access_token:
