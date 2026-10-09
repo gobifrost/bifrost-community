@@ -6,8 +6,9 @@ authenticated inbound router. It is deliberately a transport example. It does
 not include an agent, PSA/ticket behavior, conversation-history table, or any
 other private application stack.
 
-The [planned website guide](https://gobifrost.com/docs/how-to-guides/integrations/shared-teams-bot/)
-will cover the same setup with screenshots when it is published.
+The [standalone website guide](https://gobifrost.com/docs/how-to-guides/integrations/shared-teams-bot/)
+covers provider configuration, customer consent and catalog upload, tenant
+mapping, and testing, with configuration screenshots.
 
 ## Tenant model
 
