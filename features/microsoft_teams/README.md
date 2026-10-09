@@ -95,6 +95,17 @@ python3 package/build_package.py \
 ```
 
 Upload that ZIP to the intended Teams tenant catalog, then install it there.
+Catalog publication is a customer-administrator step: Graph's
+[publish](https://learn.microsoft.com/en-us/graph/api/teamsapp-publish?view=graph-rest-1.0)
+and [update](https://learn.microsoft.com/en-us/graph/api/teamsapp-update?view=graph-rest-1.0)
+endpoints support delegated administrator access, not application authentication.
+The archived Graph/Teams PowerShell app-only tests failed despite catalog-write
+permissions and temporary directory administrator roles. GDAP delegated catalog
+access also returned an unsupported-API 404; the current token includes
+`AppCatalog.ReadWrite.All` and produces the same result. Granting additional
+runtime app permissions therefore does not establish an automated publishing
+path. A direct customer-admin delegated connection is separate from CSP/GDAP.
+
 The package declares no resource-specific consent. A 403 during a particular
 tenant's installation needs investigation of that tenant's app catalog and
 installation policy; this example does not assume that RSC is required or that
