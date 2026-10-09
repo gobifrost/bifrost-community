@@ -18,6 +18,10 @@ Bifrost GRC and Bifrost Docs are planned additions. Their repositories are curre
 
 Have a solution to share? Keep it in your own public repository and [submit a pull request](https://github.com/gobifrost/bifrost-community/compare) to add a link here.
 
+| Solution | Description | Maintainer | Setup |
+|----------|-------------|------------|-------|
+| [Halo SQL Studio](https://github.com/jackmusick/HaloSqlStudio) | Explore HaloPSA reporting tables, run queries, and manage reports through a configured Halo connection. [Production release follow-up](https://github.com/jackmusick/HaloSqlStudio/issues/3). | [jackmusick](https://github.com/jackmusick) | [Install and access requirements](https://github.com/jackmusick/HaloSqlStudio#install-from-this-repository) |
+
 **Maintenance and support:** gobifrost maintains solutions hosted under the `gobifrost` GitHub organization. Solutions hosted elsewhere are maintained by their authors; gobifrost does not maintain or support them. A listing is for discovery and does not certify a solution's security or suitability. Follow each repository's license, compatibility notes, and setup instructions, and test it in your own environment before production use.
 
 ### Add a solution
