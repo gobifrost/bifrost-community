@@ -15,6 +15,7 @@ Solutions package Bifrost apps, workflows, agents, and related resources for ins
 | [Bifrost GRC](https://github.com/gobifrost/grc) | Policies, controls, assessments, risks, evidence, and customer policy sign-off. | [Install, roles, and optional integrations](https://github.com/gobifrost/grc#install) · [v0.14.4](https://github.com/gobifrost/grc/releases/tag/v0.14.4) |
 | [Bifrost Docs](https://github.com/gobifrost/docs) | Organization-scoped documentation, native authoring, attachments, and optional IT Glue migration. | [Install, roles, and optional connections](https://github.com/gobifrost/docs#install) · [v0.1.3](https://github.com/gobifrost/docs/releases/tag/v0.1.3) |
 | [WonderNote](https://github.com/gobifrost/wondernote) | Personal and shared notes, todos, reminders, and priority digests through an authenticated agent. | [Install, ownership, and optional Teams delivery](https://github.com/gobifrost/wondernote#install-and-develop) · [v3.3.3](https://github.com/gobifrost/wondernote/releases/tag/v3.3.3) |
+| [Halo Dispatch Portal](https://github.com/gobifrost/halo-dispatch-portal) | Triage HaloPSA tickets, refresh reference caches, and schedule service work. | [Install, PSA Users access, and Halo OAuth](https://github.com/gobifrost/halo-dispatch-portal#install) · [v0.1.2](https://github.com/gobifrost/halo-dispatch-portal/releases/tag/v0.1.2) |
 
 Docs and GRC have completed personal Git installation and production preservation checks. Their releases include source ZIPs and record verification details.
 
