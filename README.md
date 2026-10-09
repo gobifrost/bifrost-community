@@ -12,8 +12,9 @@ Solutions package Bifrost apps, workflows, agents, and related resources for ins
 |----------|-------------|-------|
 | [Bifrost Design System](https://github.com/gobifrost/design-system) | Shared design tokens, React components, and a Bifrost catalog app. | [README](https://github.com/gobifrost/design-system#readme) |
 | [Bifrost DMARC](https://github.com/gobifrost/bifrost-dmarc) | Aggregate reporting, email investigation, and guarded DMARC/SPF changes through Cloudflare. | [Install, integrations, and access](https://github.com/gobifrost/bifrost-dmarc#install-and-connect) |
+| [Bifrost Docs](https://github.com/gobifrost/docs) | Organization-scoped documentation, native authoring, attachments, and optional IT Glue migration. | [Install, roles, and optional connections](https://github.com/gobifrost/docs#install) · [v0.1.2](https://github.com/gobifrost/docs/releases/tag/v0.1.2) |
 
-Bifrost GRC and Bifrost Docs are planned additions. Their repositories are currently private; [publication review](https://github.com/gobifrost/bifrost-community/issues/2) is tracked before listing them for installation.
+Bifrost GRC is being generalized for publication; its [publication review](https://github.com/gobifrost/bifrost-community/issues/2) is assigned and active.
 
 ### Community-maintained solutions
 
