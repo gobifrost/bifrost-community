@@ -1,10 +1,34 @@
-# Bifrost Community Workspace
+# Bifrost Community
 
-A community [Bifrost](https://github.com/jackmusick/bifrost) workspace for MSPs. Contains modules, AI agents, workflows, and apps that can serve as references or be ported into your own workspace.
+Community resources for [Bifrost](https://github.com/gobifrost/bifrost): a solutions index and workspace examples for MSPs.
 
-> **Note:** This repo is meant as a starting point and reference, not a fork-and-run solution. The recommended approach is to use an AI agent to port the pieces you need into your own Bifrost workspace, adapting them to your environment as you go.
+## Solutions
 
-## What's Included
+Solutions package Bifrost apps, workflows, agents, and related resources for installation in your own instance. Each solution lives in its author's repository, with its own releases, setup instructions, and issue tracker. This README is the shared index.
+
+### Maintained by gobifrost
+
+| Solution | Description | Setup |
+|----------|-------------|-------|
+| [Bifrost Design System](https://github.com/gobifrost/design-system) | Shared design tokens, React components, and a Bifrost catalog app. | [README](https://github.com/gobifrost/design-system#readme) |
+
+Bifrost GRC and Bifrost Docs are planned additions. Their repositories are currently private; [publication review](https://github.com/gobifrost/bifrost-community/issues/2) is tracked before listing them for installation.
+
+### Community-maintained solutions
+
+Have a solution to share? Keep it in your own public repository and [submit a pull request](https://github.com/gobifrost/bifrost-community/compare) to add a link here.
+
+**Maintenance and support:** gobifrost maintains solutions hosted under the `gobifrost` GitHub organization. Solutions hosted elsewhere are maintained by their authors; gobifrost does not maintain or support them. A listing is for discovery and does not certify a solution's security or suitability. Follow each repository's license, compatibility notes, and setup instructions, and test it in your own environment before production use.
+
+### Add a solution
+
+Your repository should include a `bifrost.solution.yaml` manifest, an explicit license, and installation instructions. Document the supported Bifrost version and required integrations, permissions, and configuration. Keep credentials and customer data out of both the source and Git history; make installation-specific values configurable.
+
+Add a table entry with the solution's name, a short description, and links to its public repository and setup instructions. State the maintainer and compatibility requirements in the entry. Open bugs and request features in the solution's repository.
+
+## Workspace examples
+
+The code in this repository contains modules, AI agents, workflows, and apps to adapt to your own workspace. Use an AI agent with the Bifrost skill to port the pieces you need and configure them for your environment.
 
 ### Features
 
@@ -44,7 +68,7 @@ A community [Bifrost](https://github.com/jackmusick/bifrost) workspace for MSPs.
 - **Microsoft tools** — Email via Graph API, Exchange data providers
 - **Bifrost utilities** — Organization management, role management, permissions
 
-## Usage
+## Use the workspace examples
 
 The recommended way to use this repo is to have an AI agent (e.g., Claude Code with the Bifrost skill) read the code here and port the relevant pieces into your own workspace. This lets you adapt modules, workflows, and patterns to your specific environment rather than trying to maintain a fork.
 
@@ -63,9 +87,9 @@ Key config values used by included features:
 
 The Microsoft CSP app also needs a `RESELLER_LINK` in `apps/microsoft-csp/components/TenantTable.tsx` set to your Partner Center reseller invitation URL.
 
-## Contributing
+## Contributing workspace examples
 
-Contributions are welcome! If you've built something useful on Bifrost, consider adding it here.
+Contributions are welcome! Add reusable workspace examples here, or link an independently maintained solution in the index above.
 
 1. Fork the repo
 2. Create a feature branch
@@ -76,4 +100,4 @@ Please ensure any contributed code is generalized (no org-specific IDs, credenti
 
 ## License
 
-MIT
+The workspace examples in this repository are MIT licensed. Linked solutions have their own licenses.
