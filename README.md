@@ -45,6 +45,8 @@ The code in this repository contains modules, AI agents, workflows, and apps to 
 
 **Microsoft CSP App** — A React application for managing Microsoft CSP tenants. Links tenants to Bifrost organizations, handles application consent, manages GDAP relationships and role assignments, and provides batch operations.
 
+**Microsoft Teams Bot** — A reusable Bot Framework transport, tenant router, Teams package builder, and operator setup guide. See [features/microsoft_teams](features/microsoft_teams/README.md).
+
 **AutoElevate Integration** — An AI agent that reviews AutoElevate privilege elevation requests against your approval policy and autonomously approves, creates rules, or escalates to a human tech.
 
 ### Modules (MSP Integration SDKs)
