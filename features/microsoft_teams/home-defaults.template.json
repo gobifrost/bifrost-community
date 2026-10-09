@@ -1,0 +1,9 @@
+{
+  "config": {
+    "bot_tenant_id": "<bot-home-tenant-id>",
+    "client_id": "<azure-bot-client-id>",
+    "client_secret": "<azure-bot-client-secret>",
+    "teams_app_id": "<teams-catalog-app-id>",
+    "bot_name": "<bot-display-name>"
+  }
+}

@@ -1,0 +1,36 @@
+# Use with: bifrost integrations create --config-schema @integration.schema.yaml
+# Values marked as defaults are configured once on the integration. tenant_id
+# is configured in each customer mapping, where it overrides no global value.
+config_schema:
+  - key: bot_tenant_id
+    type: string
+    required: true
+    description: Home Entra tenant for Bot Connector client-credentials tokens. Configure once as an integration default.
+  - key: client_id
+    type: string
+    required: true
+    description: Azure Bot application (client) ID. Configure once as an integration default.
+  - key: client_secret
+    type: secret
+    required: true
+    description: Azure Bot application client secret. Configure once as an integration default.
+  - key: teams_app_id
+    type: string
+    required: false
+    description: Tenant catalog Teams app ID used for proactive user and channel installation.
+  - key: bot_name
+    type: string
+    required: false
+    description: Display name sent in newly created conversations.
+  - key: tenant_id
+    type: string
+    required: false
+    description: Customer Entra tenant ID. Required by the transport in every customer IntegrationMapping; do not set it as a global default.
+  - key: default_team_id
+    type: string
+    required: false
+    description: Optional default customer Team ID for channel sends.
+  - key: default_channel_id
+    type: string
+    required: false
+    description: Optional default customer channel ID for channel sends.
