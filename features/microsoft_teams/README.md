@@ -6,15 +6,17 @@ authenticated inbound router. It is deliberately a transport example. It does
 not include an agent, PSA/ticket behavior, conversation-history table, or any
 other private application stack.
 
-The [planned website guide](https://docs.gobifrost.com/guides/microsoft-teams)
+The [planned website guide](https://gobifrost.com/docs/how-to-guides/integrations/shared-teams-bot/)
 will cover the same setup with screenshots when it is published.
 
 ## Tenant model
 
 Each Bifrost customer organization gets exactly one `Microsoft Teams Bot`
 IntegrationMapping. Its `entity_id` and mapping `tenant_id` are the customer's
-Entra tenant ID. The integration's global defaults contain the shared Azure Bot
-credentials and its `bot_tenant_id`, the bot application's home tenant.
+Entra tenant ID. The integration's global defaults contain the shared Microsoft
+Teams bot credentials and its `bot_tenant_id`, the bot application's home
+tenant. Each customer mapping also supplies its own `teams_app_id`, because
+Teams catalog app IDs are tenant-specific.
 
 Connector calls for sending, replacing, deleting, and typing always acquire a
 token from `bot_tenant_id` (or the existing `botframework.com` default when it
@@ -104,8 +106,11 @@ Run one dry-run before a live message. It validates the selected target and
 shows the generated activity without sending it:
 
 ```bash
-bifrost run features/microsoft_teams/workflows/messages.py --workflow send_teams_message --params '{"target_type":"conversation","conversation_id":"<known-conversation-id>","message":"Teams transport check","dry_run":true}'
+bifrost workflows execute send_teams_message --org "<customer-org>" --params '{"target_type":"conversation","conversation_id":"<known-conversation-id>","message":"Teams transport check","dry_run":true}'
 ```
+
+`--org` selects the customer context for this globally registered workflow; it
+cannot retarget a workflow that was registered in an organization scope.
 
 For user or channel sends, the configured customer Graph authority must permit
 the documented Teams app-install and user lookup operations. Review the Azure

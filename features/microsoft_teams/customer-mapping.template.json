@@ -1,3 +1,4 @@
 {
-  "tenant_id": "<customer-tenant-id>"
+  "tenant_id": "<customer-tenant-id>",
+  "teams_app_id": "<teams-catalog-app-id>"
 }

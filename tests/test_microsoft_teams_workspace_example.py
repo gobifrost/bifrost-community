@@ -272,5 +272,27 @@ class TeamsPackageTests(unittest.TestCase):
             self.assertNotIn("resourceSpecific", manifest)
 
 
+class TeamsOperatorFixturesTests(unittest.TestCase):
+    def test_catalog_app_id_is_customer_mapping_configuration(self) -> None:
+        home_defaults = json.loads(
+            (ROOT / "features/microsoft_teams/home-defaults.template.json").read_text()
+        )
+        customer_mapping = json.loads(
+            (ROOT / "features/microsoft_teams/customer-mapping.template.json").read_text()
+        )
+
+        self.assertNotIn("teams_app_id", home_defaults["config"])
+        self.assertEqual(customer_mapping["teams_app_id"], "<teams-catalog-app-id>")
+
+    def test_readme_links_the_public_shared_bot_guide(self) -> None:
+        readme = (ROOT / "features/microsoft_teams/README.md").read_text()
+
+        self.assertIn(
+            "https://gobifrost.com/docs/how-to-guides/integrations/shared-teams-bot/",
+            readme,
+        )
+        self.assertNotIn("https://docs.gobifrost.com/guides/microsoft-teams", readme)
+
+
 if __name__ == "__main__":
     unittest.main()
