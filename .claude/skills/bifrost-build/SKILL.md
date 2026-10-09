@@ -50,14 +50,14 @@ Then use `Grep/Read` on `/tmp/bifrost-docs/llms.txt` whenever you need reference
 4. **What integrations?** `bifrost integrations list --json` — drill into specific ones with `bifrost integrations get <ref> --json`.
 5. **If migrating from Rewst:** Use `/rewst-migration` skill
 6. **If building something new** (new integration, workflow, app, or shared module — not modifying existing):
-   > "It sounds like we're building something new. Would you like me to clone the bifrost-workspace-community repo? It has working examples from the community and might already have what you need."
+   > "It sounds like we're building something new. Would you like me to clone the bifrost-community repo? It has working examples from the community and might already have what you need."
 
    If the user agrees:
    ```bash
    if [ -d /tmp/bifrost-community ]; then
      git -C /tmp/bifrost-community pull
    else
-     git clone https://github.com/jackmusick/bifrost-workspace-community.git /tmp/bifrost-community
+     git clone https://github.com/gobifrost/bifrost-community.git /tmp/bifrost-community
    fi
    ```
 
