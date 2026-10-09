@@ -12,9 +12,10 @@ Solutions package Bifrost apps, workflows, agents, and related resources for ins
 |----------|-------------|-------|
 | [Bifrost Design System](https://github.com/gobifrost/design-system) | Shared design tokens, React components, and a Bifrost catalog app. | [README](https://github.com/gobifrost/design-system#readme) |
 | [Bifrost DMARC](https://github.com/gobifrost/bifrost-dmarc) | Aggregate reporting, email investigation, and guarded DMARC/SPF changes through Cloudflare. | [Install, integrations, and access](https://github.com/gobifrost/bifrost-dmarc#install-and-connect) |
-| [Bifrost Docs](https://github.com/gobifrost/docs) | Organization-scoped documentation, native authoring, attachments, and optional IT Glue migration. | [Install, roles, and optional connections](https://github.com/gobifrost/docs#install) · [v0.1.2](https://github.com/gobifrost/docs/releases/tag/v0.1.2) |
+| [Bifrost GRC](https://github.com/gobifrost/grc) | Policies, controls, assessments, risks, evidence, and customer policy sign-off. | [Install, roles, and optional integrations](https://github.com/gobifrost/grc#install) |
+| [Bifrost Docs](https://github.com/gobifrost/docs) | Organization-scoped documentation, native authoring, attachments, and optional IT Glue migration. | [Install, roles, and optional connections](https://github.com/gobifrost/docs#install) · [v0.1.2 prerelease](https://github.com/gobifrost/docs/releases/tag/v0.1.2) |
 
-Bifrost GRC is being generalized for publication; its [publication review](https://github.com/gobifrost/bifrost-community/issues/2) is assigned and active.
+Docs and GRC release verification is [assigned and active](https://github.com/gobifrost/bifrost-community/issues/2). The public source is available; stable release links will be added after fresh-install verification.
 
 ### Community-maintained solutions
 
