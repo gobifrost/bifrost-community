@@ -10,6 +10,14 @@ function Assert-True($condition, [string]$message) {
     if (-not $condition) { throw $message }
 }
 
+function Out-File {
+    param([Parameter(ValueFromPipeline = $true)]$InputObject, $FilePath, $Encoding)
+    process {
+        if ($global:NinjaRunnerTest.case -eq 'prepare-failed') { throw 'synthetic temp write failure' }
+        $InputObject | Microsoft.PowerShell.Utility\Out-File -FilePath $FilePath -Encoding $Encoding
+    }
+}
+
 function Invoke-RestMethod {
     param($Uri, $Method, $Body, $Headers)
     Assert-True ($Method -eq 'POST') 'Expected POST'
@@ -35,7 +43,7 @@ function Invoke-RestMethod {
 }
 
 try {
-    foreach ($case in @('completed', 'script-failed', 'fetch-failed', 'post-failed')) {
+    foreach ($case in @('completed', 'script-failed', 'prepare-failed', 'fetch-failed', 'post-failed')) {
         $global:NinjaRunnerTest = @{ case = $case; receipt = $null }
         $jobId = [guid]::NewGuid().ToString()
         $caught = $false

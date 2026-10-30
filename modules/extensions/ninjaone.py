@@ -104,6 +104,16 @@ async def execute_powershell(
        and report results.
     3. If wait_seconds is set, poll the table until completed/failed/timeout.
     """
+    if isinstance(device_id, bool) or not isinstance(device_id, int) or device_id < 1:
+        raise UserError("device_id must be a positive NinjaOne device ID")
+    if not isinstance(script_content, str):
+        raise UserError("script_content must be a string")
+    if params is not None and not isinstance(params, dict):
+        raise UserError("params must be an object or null")
+    if wait_seconds is not None and (
+        isinstance(wait_seconds, bool) or not isinstance(wait_seconds, int) or wait_seconds < 1
+    ):
+        raise UserError("wait_seconds must be a positive integer or null")
     get_url = await config.get("ninja_get_script_endpoint")
     post_url = await config.get("ninja_post_result_webhook_url")
     api_key = await config.get("ninja_bifrost_api_key")

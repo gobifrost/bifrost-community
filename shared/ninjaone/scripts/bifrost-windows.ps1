@@ -48,20 +48,18 @@ catch {
 
 # Save script to temp file (enables param() blocks)
 $tmpFile = "$env:TEMP\bifrost_$job_id.ps1"
-$scriptContent | Out-File -FilePath $tmpFile -Encoding UTF8
 
-# Build splat hashtable from params
-$splatParams = @{}
-if ($inputParams) {
-    $inputParams.PSObject.Properties | ForEach-Object {
-        $splatParams[$_.Name] = $_.Value
-    }
-}
-
-# Execute with splatting
+# Protect preparation and execution so either failure produces a receipt.
 $output = $null
 $scriptError = $null
 try {
+    $scriptContent | Out-File -FilePath $tmpFile -Encoding UTF8
+    $splatParams = @{}
+    if ($inputParams) {
+        $inputParams.PSObject.Properties | ForEach-Object {
+            $splatParams[$_.Name] = $_.Value
+        }
+    }
     $output = . $tmpFile @splatParams | Out-String
 }
 catch {

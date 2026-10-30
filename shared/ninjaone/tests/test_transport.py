@@ -130,6 +130,20 @@ class TransportTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(self.tables.rows, {})
         self.ninja.create_run.assert_not_awaited()
 
+    async def test_invalid_helper_inputs_fail_before_storage_or_dispatch(self):
+        for arguments in (
+            {"device_id": True, "script_content": "test"},
+            {"device_id": 0, "script_content": "test"},
+            {"device_id": 42, "script_content": None},
+            {"device_id": 42, "script_content": "test", "params": []},
+            {"device_id": 42, "script_content": "test", "wait_seconds": 0},
+            {"device_id": 42, "script_content": "test", "wait_seconds": True},
+        ):
+            with self.assertRaises(ValueError):
+                await self.helper.execute_powershell(**arguments)
+        self.assertEqual(self.tables.rows, {})
+        self.ninja.create_run.assert_not_awaited()
+
     async def test_result_envelope_variants_and_invalid_input(self):
         receipt = await self.create_job()
         for body in ({"job_id": receipt.job_id, "status": "failed", "error": "oops"},

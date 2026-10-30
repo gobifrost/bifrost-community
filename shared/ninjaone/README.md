@@ -100,6 +100,8 @@ The SDK maps discovery to `GET /v2/device/{id}/scripting/options` (read its
 `{"id":<library-script-id>,"parameters":"<runner-arguments>","runAs":"system"}`.
 Both use the NinjaOne OAuth bearer token; their response is not the script's
 completion receipt.
+Validate inputs before storage or dispatch: a positive non-boolean integer device
+ID, string source, dictionary-or-null params, and positive integer-or-null wait.
 If discovery or triggering raises, record `failed` and an error before raising
 `UserError`. A transport error after sending the launch request can be ambiguous;
 inspect the existing job/device before retrying an operation with side effects.
@@ -199,10 +201,26 @@ the prior receipt; callers needing first-receipt semantics must implement them.
 
 The supplied runner sends one key to both URLs. Select a credential that the
 target instance actually accepts on both endpoints and verify that boundary.
+Record the key's endpoint authorization and the unattended execution identity
+with its organization and table/config grants as explicit setup artifacts. Human
+workflow roles alone do not configure device-key authentication. Verify that a
+POST JSON body `{job_id}` is mapped to the function's `job_id` argument and returns
+the envelope above through the actual HTTP endpoint, not only a direct SDK call.
 If the instance uses separate per-workflow keys, extend the helper and runner
 together to carry separate fetch/result keys from secret config; retain the
 single-key behavior for existing callers. Keep both receivers authenticated.
 Do not make a receiver public to bypass an authentication failure.
+
+The reference launcher passes the callback key through NinjaOne's script
+arguments. Secret config storage does not conceal it from NinjaOne or the device.
+Verify who can inspect script/run history and device process arguments, restrict
+that access to trusted operators, and document the resulting credential trust
+boundary. If that trust model is unsuitable, implement scoped, short-lived job
+credentials before enabling execution. Keep real arguments out of test reports.
+The reference concatenates launch arguments without quoting: use whitespace-free,
+argument-safe endpoint URLs and generated keys. If an environment needs spaces
+or shell-significant characters, implement argument serialization for its actual
+NinjaOne PowerShell invocation and test that invocation's parameter binding.
 
 An existing result webhook may remain the receiver if its adapter authentication
 and payload mapping are verified. `X-Bifrost-Key` authenticates workflow endpoints;
@@ -227,7 +245,9 @@ has four mandatory string parameters matching the launch call above. It must:
 1. POST `{job_id}` to the fetch URL with JSON content type and `X-Bifrost-Key`.
 2. Read `response.result.script_content` and `response.result.params`.
 3. Write UTF-8 source to `$env:TEMP\bifrost_<job_id>.ps1` so `param()` blocks work.
-4. Convert the params object's properties to a hashtable and dot-source the file
+4. Protect temporary-file writing, parameter setup, and execution in the same
+   try/catch/finally so a preparation failure also produces a failed receipt.
+   Convert the params object's properties to a hashtable and dot-source the file
    with splatting. Capture pipeline output through `Out-String` and catch
    terminating PowerShell errors under `$ErrorActionPreference = 'Stop'`.
 5. Delete the temporary file in `finally`, then POST `job_id`, terminal `status`,
@@ -272,6 +292,7 @@ removed temporary file. Also verify:
 |-------|-------------------|
 | Named parameter values with quotes, spaces, and Unicode | Literal values survive JSON, fetch, splatting, and output. |
 | Payload throws | Job becomes `failed`; error survives callback. |
+| TEMP write/setup fails | Failed receipt is delivered and partial temporary files are cleaned up. |
 | No wait / short wait | Pending receipt / caller timeout; original job can complete later. |
 | Missing config or unknown library script | Actionable error; no silent successful dispatch. |
 | Invalid fetch ID, completed-job fetch, invalid result status | Rejected without changing an unrelated job. |
