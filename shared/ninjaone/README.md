@@ -94,6 +94,12 @@ exactly, and cache the discovered ID. Call `create_run(str(device_id), data=...)
 with the library script ID, `runAs`, and the runner's four named parameters:
 `-job_id`, `-get_url`, `-post_url`, and `-api_key`. The source and its named
 parameters stay in the job; they are fetched separately from the launch call.
+The SDK maps discovery to `GET /v2/device/{id}/scripting/options` (read its
+`scripts` array of `id`/`name` records) and dispatch to
+`POST /v2/device/{id}/script/run`, with JSON
+`{"id":<library-script-id>,"parameters":"<runner-arguments>","runAs":"system"}`.
+Both use the NinjaOne OAuth bearer token; their response is not the script's
+completion receipt.
 If discovery or triggering raises, record `failed` and an error before raising
 `UserError`. A transport error after sending the launch request can be ambiguous;
 inspect the existing job/device before retrying an operation with side effects.
