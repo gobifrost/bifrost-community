@@ -132,9 +132,8 @@ async def execute_powershell(
     )
     logger.info(f"Created script job {job_id} for device {device_id}")
 
-    script_id = await _resolve_script_id(device_id)
-
     try:
+        script_id = await _resolve_script_id(device_id)
         await ninjaone.create_run(
             str(device_id),
             data={

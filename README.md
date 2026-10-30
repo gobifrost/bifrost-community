@@ -41,6 +41,8 @@ The code in this repository contains modules, AI agents, workflows, and apps to 
 
 ### Features
 
+**NinjaOne PowerShell Execution** — A shared launcher, Windows runner, fetch/result workflows, and [coding-agent build prompt](shared/ninjaone/README.md) for recreating the complete execution path in your own workspace.
+
 **HaloPSA Report Agent** — An AI agent that generates HaloPSA SQL reports from natural language. Searches its knowledge base for schema patterns, writes and executes queries, iterates on errors, and saves what it learns for next time.
 
 **Microsoft CSP App** — A React application for managing Microsoft CSP tenants. Links tenants to Bifrost organizations, handles application consent, manages GDAP relationships and role assignments, and provides batch operations.
